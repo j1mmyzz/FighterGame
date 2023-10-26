@@ -45,3 +45,14 @@ if(alter1==1){
 }else{
     alterFatigue = getRandomInt(-6,6); //because the project saids 6
 }
+
+if(alter1==1){
+    alterStrngth = getRandomInt(-1,1);
+}else if(alter1==2){
+    alterCunning = getRandomInt(-1,1);
+}else if(alter1==3){
+    alterSpeed = getRandomInt(-1,1);
+}else{
+    alterFatigue = getRandomInt(-6,6); //because the project saids 6
+}
+//not done with alter!!!
