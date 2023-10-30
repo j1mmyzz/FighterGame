@@ -234,12 +234,12 @@ playerDefendButton.addEventListener("click", () => {
     }
   } else{
     //if both player and computer defend, both get some fatigue points back
-   if(player.fatigue += getRandomInt(1,6) <= INITIAL_PLAYER_FATIGUE){
-    player.fatigue += getRandomInt(1,6);
-   }
-   if(computer.fatigue += getRandomInt(1,6) <= INITIAL_COMPUTER_FATIGUE){
-    computer.fatigue += getRandomInt(1,6);
-   }
+    if(player.fatigue += getRandomInt(1,6) <= INITIAL_PLAYER_FATIGUE){
+      player.fatigue += getRandomInt(1,6);
+    }
+    if(computer.fatigue += getRandomInt(1,6) <= INITIAL_COMPUTER_FATIGUE){
+      computer.fatigue += getRandomInt(1,6);
+    }
   }
   updateStats();
 });
