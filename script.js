@@ -188,8 +188,8 @@ updateStats();
 
 const INITIAL_COMPUTER_FATIGUE = computer.fatigue;
 const INITIAL_PLAYER_FATIGUE = player.fatigue;
-console.log(INITIAL_COMPUTER_FATIGUE);
 console.log(INITIAL_PLAYER_FATIGUE);
+console.log(INITIAL_COMPUTER_FATIGUE);
 function computerChoice() {
   //if 0 then computer is defending (computer.defending = true), 1 then computer is attacking (computer.defending = false)
   let compChoice = getRandomInt(0, 1);
@@ -211,7 +211,7 @@ playerAttackButton.addEventListener("click", () => {
     if (computerDamage > 0) {
         computer.fatigue -= computerDamage;
     } else{
-      if(computer.fatigue += getRandomInt(1,6) <= INITIAL_COMPUTER_FATIGUE){
+      if(computer.fatigue + getRandomInt(1,6) <= INITIAL_COMPUTER_FATIGUE){
         computer.fatigue += getRandomInt(1,6)
       }
     }
@@ -222,23 +222,23 @@ playerAttackButton.addEventListener("click", () => {
 playerDefendButton.addEventListener("click", () => {
   player.defending = true;
   computerChoice();
-  if(!computer.defending){
+  if (!computer.defending) {
     // if computer attacks
     let playerDamage = computer.attack - player.defense;
-    if(playerDamage > 0){
-        player.fatigue -= playerDamage;
-    }else{
-      if(player.fatigue += getRandomInt(0,6) <= INITIAL_PLAYER_FATIGUE){
-        player.fatigue += getRandomInt(0,6);
+    if (playerDamage > 0) {
+      player.fatigue -= playerDamage;
+    } else {
+      if (player.fatigue + getRandomInt(1, 6) <= INITIAL_PLAYER_FATIGUE) {
+        player.fatigue += getRandomInt(1, 6);
       }
     }
-  } else{
-    //if both player and computer defend, both get some fatigue points back
-    if(player.fatigue += getRandomInt(1,6) <= INITIAL_PLAYER_FATIGUE){
-      player.fatigue += getRandomInt(1,6);
+  } else {
+    // if both player and computer defend, both get some fatigue points back
+    if (player.fatigue + getRandomInt(1,6) <= INITIAL_PLAYER_FATIGUE) {
+      player.fatigue += getRandomInt(1, 6);
     }
-    if(computer.fatigue += getRandomInt(1,6) <= INITIAL_COMPUTER_FATIGUE){
-      computer.fatigue += getRandomInt(1,6);
+    if (computer.fatigue + getRandomInt(1,6) <= INITIAL_COMPUTER_FATIGUE) {
+      computer.fatigue += getRandomInt(1, 6);
     }
   }
   updateStats();
