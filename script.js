@@ -163,84 +163,103 @@ if (computer.attack > player.defense) {
 const playerDiv = document.querySelector(".player-stats");
 const computerDiv = document.querySelector(".computer-stats");
 
-function updateStats(){
+function updateStats() {
   playerDiv.innerHTML = `Player = Strength: ${player.strength} Cunning: ${player.cunning} Speed: ${player.speed} Fatigue: ${player.fatigue} Attack: ${player.attack} Defending: ${player.defending} Defense: ${player.defense}`;
   computerDiv.innerHTML = `Computer = Strength: ${computer.strength} Cunning: ${computer.cunning} Speed: ${computer.speed} Fatigue: ${computer.fatigue} Attack: ${computer.attack} Defending: ${computer.defending} Defense: ${computer.defense}`;
-  if(player.fatigue<=0){
-    //computer won
-    playerDiv.innerHTML = "YOU LOST!"
-    computerDiv.innerHTML = "YOU WON!"
-    document.querySelector(".player-attack-button").disabled = true;
-    document.querySelector(".player-defend-button").disabled = true;
-
-  }
-  if(computer.fatigue<=0){
-    //player won
-    computerDiv.innerHTML = "YOU LOST!"
-    playerDiv.innerHTML = "YOU WON!"
-    document.querySelector(".player-attack-button").disabled = true;
-    document.querySelector(".player-defend-button").disabled = true;
-
-  }
 }
 
 updateStats();
 
 const INITIAL_COMPUTER_FATIGUE = computer.fatigue;
 const INITIAL_PLAYER_FATIGUE = player.fatigue;
+
 console.log(INITIAL_PLAYER_FATIGUE);
 console.log(INITIAL_COMPUTER_FATIGUE);
+
 function computerChoice() {
   //if 0 then computer is defending (computer.defending = true), 1 then computer is attacking (computer.defending = false)
   let compChoice = getRandomInt(0, 1);
   compChoice === 0 ? (computer.defending = true) : (computer.defending = false);
-
+}
+function checkFinishingMove() {
+  if (player.fatigue >= 2 * computer.fatigue || computer.fatigue <= 0) {
+    //attemp a finishing move
+    document.querySelector(".player-finish-button").style.visibility =
+      "visible";
+    document.querySelector(".player-attack-button").disabled = true;
+    document.querySelector(".player-defend-button").disabled = true;
+  }
+  if (computer.fatigue >= 2 * player.fatigue || player.fatigue <= 0) {
+    //computer won
+    playerDiv.innerHTML = "YOU LOST!";
+    computerDiv.innerHTML = "YOU WON!";
+    document.querySelector(".player-attack-button").disabled = true;
+    document.querySelector(".player-defend-button").disabled = true;
+  }
 }
 
-//fatigue may never go above initial fatigue 
+function finishingMove() {
+  playerDiv.innerHTML = "YOU WON!";
+  computerDiv.innerHTML = "YOU LOST!";
+}
+
+//fatigue may never go above initial fatigue
 playerAttackButton.addEventListener("click", () => {
   player.defending = false;
   computerChoice();
-  if(!computer.defending){
+  if (!computer.defending) {
     //if player attacks and computer not defending (attacking)
-      computer.fatigue -= player.attack;
-      player.fatigue -= computer.attack;
-  } else{
-    //if computer defends and player attacks 
+    computer.fatigue -= player.attack;
+    player.fatigue -= computer.attack;
+  } else {
+    //if computer defends and player attacks
     let computerDamage = player.attack - computer.defense;
     if (computerDamage > 0) {
-        computer.fatigue -= computerDamage;
-    } else{
-      if(computer.fatigue + getRandomInt(1,6) <= INITIAL_COMPUTER_FATIGUE){
-        computer.fatigue += getRandomInt(1,6)
+      computer.fatigue -= computerDamage;
+    } else {
+      if (computer.fatigue + getRandomInt(1, 6) <= INITIAL_COMPUTER_FATIGUE) {
+        computer.fatigue += getRandomInt(1, 6);
       }
     }
   }
   updateStats();
+  checkFinishingMove();
 });
 
 playerDefendButton.addEventListener("click", () => {
   player.defending = true;
   computerChoice();
+
   if (!computer.defending) {
     // if computer attacks
     let playerDamage = computer.attack - player.defense;
     if (playerDamage > 0) {
       player.fatigue -= playerDamage;
     } else {
-      if (player.fatigue + getRandomInt(1, 6) <= INITIAL_PLAYER_FATIGUE) {
-        player.fatigue += getRandomInt(1, 6);
+      const randomFatigueIncrease = getRandomInt(1, 6);
+      if (player.fatigue + randomFatigueIncrease <= INITIAL_PLAYER_FATIGUE) {
+        player.fatigue += randomFatigueIncrease;
       }
     }
   } else {
     // if both player and computer defend, both get some fatigue points back
-    if (player.fatigue + getRandomInt(1,6) <= INITIAL_PLAYER_FATIGUE) {
-      player.fatigue += getRandomInt(1, 6);
+    const playerRandomFatigueIncrease = getRandomInt(1, 6);
+    const computerRandomFatigueIncrease = getRandomInt(1, 6);
+
+    if (
+      player.fatigue + playerRandomFatigueIncrease <=
+      INITIAL_PLAYER_FATIGUE
+    ) {
+      player.fatigue += playerRandomFatigueIncrease;
     }
-    if (computer.fatigue + getRandomInt(1,6) <= INITIAL_COMPUTER_FATIGUE) {
-      computer.fatigue += getRandomInt(1, 6);
+
+    if (
+      computer.fatigue + computerRandomFatigueIncrease <=
+      INITIAL_COMPUTER_FATIGUE
+    ) {
+      computer.fatigue += computerRandomFatigueIncrease;
     }
   }
   updateStats();
+  checkFinishingMove();
 });
-//there is an issue when clicking defend, the fatigue can go above the initial fatigue for both player and computer
