@@ -1,3 +1,32 @@
+body {
+  margin: 0px;
+  padding: 20px;
+}
+.field {
+  display: flex;
+  background-color: aliceblue;
+  height: 70vh;
+  justify-content: space-evenly;
+}
+.player {
+  background-color: antiquewhite;
+}
+.computer {
+  background-color: burlywood;
+}
+
 .player-finish-button {
   visibility: hidden;
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bottom-buttons {
+  width: 200px;
+  height: 40px;
+}
+#rules-button {
+  margin-bottom: 10px;
 }

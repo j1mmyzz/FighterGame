@@ -8,19 +8,29 @@
     <title>One of One Fighter Game</title>
   </head>
   <body>
-    <div class="player">
-      <div class="player-stats"></div>
-      <button class="player-attack-button">Attack</button>
-      <button class="player-defend-button">Defend</button>
-      <button class="player-finish-button" onclick="finishingMove();">
-        FINISH
+    <div class="field">
+      <div class="player">
+        <div class="player-stats"></div>
+        <button class="player-attack-button">Attack</button>
+        <button class="player-defend-button">Defend</button>
+        <button class="player-finish-button" onclick="finishingMove();">
+          FINISH
+        </button>
+      </div>
+      <br />
+      <div class="computer">
+        <div class="computer-stats"></div>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <a href="rules.html">
+        <button class="bottom-buttons" id="rules-button">Rules</button>
+      </a>
+      <button onclick="window.location.reload();" class="bottom-buttons">
+        Restart
       </button>
     </div>
-    <br />
-    <div class="computer">
-      <div class="computer-stats"></div>
-    </div>
-    <button onclick="window.location.reload();">Restart</button>
     <script src="script.js"></script>
   </body>
 </html>

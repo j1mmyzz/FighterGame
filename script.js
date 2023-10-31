@@ -163,16 +163,15 @@ if (computer.attack > player.defense) {
 const playerDiv = document.querySelector(".player-stats");
 const computerDiv = document.querySelector(".computer-stats");
 
-function updateStats() {
-  playerDiv.innerHTML = `Player = Strength: ${player.strength} Cunning: ${player.cunning} Speed: ${player.speed} Fatigue: ${player.fatigue} Attack: ${player.attack} Defending: ${player.defending} Defense: ${player.defense}`;
-  computerDiv.innerHTML = `Computer = Strength: ${computer.strength} Cunning: ${computer.cunning} Speed: ${computer.speed} Fatigue: ${computer.fatigue} Attack: ${computer.attack} Defending: ${computer.defending} Defense: ${computer.defense}`;
-}
-
-updateStats();
-
 const INITIAL_COMPUTER_FATIGUE = computer.fatigue;
 const INITIAL_PLAYER_FATIGUE = player.fatigue;
 
+function updateStats() {
+  playerDiv.innerHTML = `Player = Strength: ${player.strength} Cunning: ${player.cunning} Speed: ${player.speed} Fatigue: ${player.fatigue} Attack: ${player.attack} Defending: ${player.defending} Defense: ${player.defense} Initial Fatigue: ${INITIAL_PLAYER_FATIGUE}`;
+  computerDiv.innerHTML = `Computer = Strength: ${computer.strength} Cunning: ${computer.cunning} Speed: ${computer.speed} Fatigue: ${computer.fatigue} Attack: ${computer.attack} Defending: ${computer.defending} Defense: ${computer.defense} Initial Fatigue: ${INITIAL_COMPUTER_FATIGUE}`;
+}
+
+updateStats();
 console.log(INITIAL_PLAYER_FATIGUE);
 console.log(INITIAL_COMPUTER_FATIGUE);
 
