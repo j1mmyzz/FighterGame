@@ -217,6 +217,7 @@ function finishingMove() {
   let computerFatigueBar = document.getElementById("computer-fatigue");
   computerFatigueBar.max = INITIAL_COMPUTER_FATIGUE;
   computerFatigueBar.value = 0;
+  document.querySelector(".player-finish-button").disabled = true;
 }
 
 //fatigue may never go above initial fatigue
