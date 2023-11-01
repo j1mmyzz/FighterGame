@@ -1,5 +1,8 @@
 const playerAttackButton = document.querySelector(".player-attack-button");
 const playerDefendButton = document.querySelector(".player-defend-button");
+const playerFinishButton = (document.querySelector(
+  ".player-finish-button"
+).disabled = true);
 
 //move logs
 const playerMoveLog = document.querySelector(".player-move-log");
@@ -171,8 +174,8 @@ const INITIAL_COMPUTER_FATIGUE = computer.fatigue;
 const INITIAL_PLAYER_FATIGUE = player.fatigue;
 
 function updateStats() {
-  playerDiv.innerHTML = `Player = Strength: ${player.strength} Cunning: ${player.cunning} Speed: ${player.speed} Fatigue: ${player.fatigue} Attack: ${player.attack} Defending: ${player.defending} Defense: ${player.defense} Initial Fatigue: ${INITIAL_PLAYER_FATIGUE}`;
-  computerDiv.innerHTML = `Computer = Strength: ${computer.strength} Cunning: ${computer.cunning} Speed: ${computer.speed} Fatigue: ${computer.fatigue} Attack: ${computer.attack} Defending: ${computer.defending} Defense: ${computer.defense} Initial Fatigue: ${INITIAL_COMPUTER_FATIGUE}`;
+  playerDiv.innerHTML = `Strength: ${player.strength} Cunning: ${player.cunning} Speed: ${player.speed} Fatigue: ${player.fatigue} Attack: ${player.attack} Defending: ${player.defending} Defense: ${player.defense} Initial Fatigue: ${INITIAL_PLAYER_FATIGUE}`;
+  computerDiv.innerHTML = `Strength: ${computer.strength} Cunning: ${computer.cunning} Speed: ${computer.speed} Fatigue: ${computer.fatigue} Attack: ${computer.attack} Defending: ${computer.defending} Defense: ${computer.defense} Initial Fatigue: ${INITIAL_COMPUTER_FATIGUE}`;
 
   let playerFatigueBar = document.getElementById("player-fatigue");
   playerFatigueBar.max = INITIAL_PLAYER_FATIGUE;
@@ -194,8 +197,7 @@ function computerChoice() {
 function checkFinishingMove() {
   if (player.fatigue >= 2 * computer.fatigue || computer.fatigue <= 0) {
     //attemp a finishing move
-    document.querySelector(".player-finish-button").style.visibility =
-      "visible";
+    document.querySelector(".player-finish-button").disabled = false;
     document.querySelector(".player-attack-button").disabled = true;
     document.querySelector(".player-defend-button").disabled = true;
   }

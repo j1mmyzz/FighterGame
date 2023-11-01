@@ -1,10 +1,19 @@
 body {
   margin: 0px;
+  font-family: Arial, Helvetica, sans-serif;
 }
-a,
+
 button {
   margin: 0px;
 }
+a {
+  margin-top: 10px;
+}
+ul {
+  list-style-type: disc;
+  padding-inline-start: 0px;
+}
+
 .field {
   display: flex;
   background-color: aliceblue;
@@ -12,30 +21,32 @@ button {
   justify-content: space-evenly;
 }
 .player {
-  background-color: antiquewhite;
+  background-color: #f8f8ff;
   width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-content: center;
+  align-items: center;
   text-align: center;
 }
 .computer {
-  background-color: burlywood;
+  background-color: #d69ab1;
   width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-content: center;
+  align-items: center;
   text-align: center;
 }
 
-.player-finish-button {
-  visibility: hidden;
-}
 .buttons {
   display: flex;
+  padding: 20px;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 30px;
 }
 .bottom-buttons {
   width: 200px;
@@ -45,30 +56,51 @@ button {
 }
 .playerButtons {
   width: 400px;
+  padding: 20px;
 }
 .playerButton {
   width: 100px;
+  height: 40px;
+  background-color: white;
+  border-radius: 10px;
 }
 #rules-button {
   margin-bottom: 10px;
 }
 
+.computer-move-log,
 .player-move-log {
   overflow: scroll;
-  height: 200px;
-  background-color: grey;
-}
-.computer-move-log {
-  overflow: scroll;
-  height: 200px;
-  background-color: grey;
+  height: 150px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  border: 2px solid;
+  width: 250px;
 }
 #computer-fatigue {
-  width: 40vw;
+  width: 45vw;
   height: 30px;
 }
 
 #player-fatigue {
-  width: 40vw;
+  width: 45vw;
   height: 30px;
+}
+
+#gojo {
+  width: 100px;
+  margin-bottom: 5px;
+}
+#sukana {
+  width: 340px;
+}
+
+.player-stats,
+.computer-stats {
+  background-color: white;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 10px;
+  padding: 10px;
 }
