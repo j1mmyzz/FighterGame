@@ -10,16 +10,27 @@
   <body>
     <div class="field">
       <div class="player">
+        <progress id="player-fatigue" value="" max=""></progress>
+
         <div class="player-stats"></div>
-        <button class="player-attack-button">Attack</button>
-        <button class="player-defend-button">Defend</button>
-        <button class="player-finish-button" onclick="finishingMove();">
-          FINISH
-        </button>
+        <div class="playerButtons">
+          <button class="player-attack-button playerButton">Attack</button>
+          <button class="player-defend-button playerButton">Defend</button>
+          <button
+            class="player-finish-button playerButton"
+            onclick="finishingMove();"
+          >
+            FINISH
+          </button>
+        </div>
+
+        <div class="player-move-log"></div>
       </div>
       <br />
       <div class="computer">
+        <progress id="computer-fatigue" value="" max=""></progress>
         <div class="computer-stats"></div>
+        <div class="computer-move-log"></div>
       </div>
     </div>
 

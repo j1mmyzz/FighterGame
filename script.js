@@ -1,6 +1,10 @@
 const playerAttackButton = document.querySelector(".player-attack-button");
 const playerDefendButton = document.querySelector(".player-defend-button");
 
+//move logs
+const playerMoveLog = document.querySelector(".player-move-log");
+const computerMoveLog = document.querySelector(".computer-move-log");
+
 // Define initial stats
 let alterStrength;
 let alterCunning;
@@ -169,6 +173,13 @@ const INITIAL_PLAYER_FATIGUE = player.fatigue;
 function updateStats() {
   playerDiv.innerHTML = `Player = Strength: ${player.strength} Cunning: ${player.cunning} Speed: ${player.speed} Fatigue: ${player.fatigue} Attack: ${player.attack} Defending: ${player.defending} Defense: ${player.defense} Initial Fatigue: ${INITIAL_PLAYER_FATIGUE}`;
   computerDiv.innerHTML = `Computer = Strength: ${computer.strength} Cunning: ${computer.cunning} Speed: ${computer.speed} Fatigue: ${computer.fatigue} Attack: ${computer.attack} Defending: ${computer.defending} Defense: ${computer.defense} Initial Fatigue: ${INITIAL_COMPUTER_FATIGUE}`;
+
+  let playerFatigueBar = document.getElementById("player-fatigue");
+  playerFatigueBar.max = INITIAL_PLAYER_FATIGUE;
+  playerFatigueBar.value = player.fatigue;
+  let computerFatigueBar = document.getElementById("computer-fatigue");
+  computerFatigueBar.max = INITIAL_COMPUTER_FATIGUE;
+  computerFatigueBar.value = computer.fatigue;
 }
 
 updateStats();
@@ -194,12 +205,18 @@ function checkFinishingMove() {
     computerDiv.innerHTML = "YOU WON!";
     document.querySelector(".player-attack-button").disabled = true;
     document.querySelector(".player-defend-button").disabled = true;
+    let playerFatigueBar = document.getElementById("player-fatigue");
+    playerFatigueBar.max = INITIAL_PLAYER_FATIGUE;
+    playerFatigueBar.value = 0;
   }
 }
 
 function finishingMove() {
   playerDiv.innerHTML = "YOU WON!";
   computerDiv.innerHTML = "YOU LOST!";
+  let computerFatigueBar = document.getElementById("computer-fatigue");
+  computerFatigueBar.max = INITIAL_COMPUTER_FATIGUE;
+  computerFatigueBar.value = 0;
 }
 
 //fatigue may never go above initial fatigue
@@ -221,6 +238,23 @@ playerAttackButton.addEventListener("click", () => {
       }
     }
   }
+
+  //update log
+  let pmove = document.createElement("ul");
+  pmove.innerHTML = `You attacked the computer for ${player.attack}`;
+  playerMoveLog.appendChild(pmove);
+  if (computer.defending) {
+    //update log
+    let cmove = document.createElement("ul");
+    cmove.innerHTML = `Computer defended`;
+    computerMoveLog.appendChild(cmove);
+  }
+  if (!computer.defending) {
+    //update log
+    let cmove = document.createElement("ul");
+    cmove.innerHTML = `You attacked the player for ${computer.attack}`;
+    computerMoveLog.appendChild(cmove);
+  }
   updateStats();
   checkFinishingMove();
 });
@@ -240,6 +274,11 @@ playerDefendButton.addEventListener("click", () => {
         player.fatigue += randomFatigueIncrease;
       }
     }
+    //update log
+    let cmove = document.createElement("ul");
+    cmove.innerHTML = `You attacked the player for ${computer.attack}`;
+    computerMoveLog.appendChild(cmove);
+    console.log("oughreu");
   } else {
     // if both player and computer defend, both get some fatigue points back
     const playerRandomFatigueIncrease = getRandomInt(1, 6);
@@ -258,7 +297,19 @@ playerDefendButton.addEventListener("click", () => {
     ) {
       computer.fatigue += computerRandomFatigueIncrease;
     }
+    if (computer.defending) {
+      //update log
+      let cmove = document.createElement("ul");
+      cmove.innerHTML = `Computer defended`;
+      computerMoveLog.appendChild(cmove);
+    }
   }
+
+  //update log
+  let pmove = document.createElement("ul");
+  pmove.innerHTML = `You defended`;
+  playerMoveLog.appendChild(pmove);
+
   updateStats();
   checkFinishingMove();
 });

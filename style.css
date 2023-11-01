@@ -1,18 +1,31 @@
 body {
   margin: 0px;
-  padding: 20px;
+}
+a,
+button {
+  margin: 0px;
 }
 .field {
   display: flex;
   background-color: aliceblue;
-  height: 70vh;
+  height: 85vh;
   justify-content: space-evenly;
 }
 .player {
   background-color: antiquewhite;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 .computer {
   background-color: burlywood;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 
 .player-finish-button {
@@ -20,13 +33,42 @@ body {
 }
 .buttons {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
 .bottom-buttons {
   width: 200px;
   height: 40px;
+  background-color: white;
+  border-radius: 20px;
+}
+.playerButtons {
+  width: 400px;
+}
+.playerButton {
+  width: 100px;
 }
 #rules-button {
   margin-bottom: 10px;
+}
+
+.player-move-log {
+  overflow: scroll;
+  height: 200px;
+  background-color: grey;
+}
+.computer-move-log {
+  overflow: scroll;
+  height: 200px;
+  background-color: grey;
+}
+#computer-fatigue {
+  width: 40vw;
+  height: 30px;
+}
+
+#player-fatigue {
+  width: 40vw;
+  height: 30px;
 }
