@@ -4,14 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>One of One Fighter Game</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <title>One on One Fighter Game</title>
   </head>
   <body>
     <div class="field">
       <div class="player">
         <progress id="player-fatigue" value="" max=""></progress>
-
         <div class="player-stats"></div>
         <div class="playerButtons">
           <button class="player-attack-button playerButton">Attack</button>
@@ -30,6 +29,10 @@
       <div class="computer">
         <progress id="computer-fatigue" value="" max=""></progress>
         <div class="computer-stats"></div>
+        <button class="playerButton" id="rng-sukana" disabled>
+          RNG Sukana
+        </button>
+
         <img src="sprites/sukana.png" alt="sukana" id="sukana" />
         <div class="computer-move-log"></div>
       </div>
