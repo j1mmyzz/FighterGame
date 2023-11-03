@@ -51,7 +51,7 @@ ul {
   justify-content: center;
   gap: 30px;
   background-color: #f8f8ff;
-  height: 30px;
+  height: calc(10vh - 40px);
 }
 .bottom-buttons {
   width: 200px;
@@ -75,7 +75,7 @@ ul {
 
 .computer-move-log,
 .player-move-log {
-  overflow: scroll;
+  overflow-y: scroll;
   height: 125px;
   background-color: white;
   border-radius: 10px;
