@@ -207,6 +207,7 @@ function checkFinishingMove() {
     computerDiv.innerHTML = "YOU WON!";
     document.querySelector(".player-attack-button").disabled = true;
     document.querySelector(".player-defend-button").disabled = true;
+    document.querySelector(".player-finish-button").disabled = true;
     let playerFatigueBar = document.getElementById("player-fatigue");
     playerFatigueBar.max = INITIAL_PLAYER_FATIGUE;
     playerFatigueBar.value = 0;
@@ -316,7 +317,7 @@ playerDefendButton.addEventListener("click", () => {
   updateStats();
   checkFinishingMove();
 });
-// ANOTHER BUG EVEN IF YOU LOSE THE FINISH BUTTON STILL SHOWS UP SOMETIMES AND IF YOU CLICK IT YOU WIN
+
 //ADD ANIMATION
 //Gojo: Blue = small damage red = bigger damage purple = biggest damage
 //Sukana: Slash = Small damage manyslash = bigger danage redslash = biggest damage
