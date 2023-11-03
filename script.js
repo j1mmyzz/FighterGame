@@ -316,6 +316,7 @@ playerDefendButton.addEventListener("click", () => {
   updateStats();
   checkFinishingMove();
 });
+// ANOTHER BUG EVEN IF YOU LOSE THE FINISH BUTTON STILL SHOWS UP SOMETIMES AND IF YOU CLICK IT YOU WIN
 //ADD ANIMATION
 //Gojo: Blue = small damage red = bigger damage purple = biggest damage
 //Sukana: Slash = Small damage manyslash = bigger danage redslash = biggest damage
