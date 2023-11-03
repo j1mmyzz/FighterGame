@@ -316,3 +316,8 @@ playerDefendButton.addEventListener("click", () => {
   updateStats();
   checkFinishingMove();
 });
+//ADD ANIMATION
+//Gojo: Blue = small damage red = bigger damage purple = biggest damage
+//Sukana: Slash = Small damage manyslash = bigger danage redslash = biggest damage
+
+
